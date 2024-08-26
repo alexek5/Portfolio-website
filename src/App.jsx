@@ -9,9 +9,12 @@ const App = () => {
   return (
     <>
     <div className = "App"> 
+    <Navbar />
       <div className = "gradient_bg">
-        <Navbar />
-        <Header />
+        
+        <Header>
+          
+        </Header>
       </div>
       <AboutMe />
     </div>

@@ -1,0 +1,27 @@
+.text-container {
+    position: relative;
+  
+  }
+  
+  .info-text1, .info-text2 {
+    position: sticky;
+    top: 50px; /* Sticky position from the top of the viewport */
+    left: 50px;
+    color: black;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    z-index: 10;
+    height: auto;
+    width: 30%;
+    margin-bottom: 50vh;
+    /* Ensure space between texts */
+  }
+  
+  .info-text2 {
+    /* This pushes info-text2 further down to allow it to stick */
+  }
+  
+  .space{
+    height: 50vh;
+  }
