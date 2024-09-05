@@ -17,33 +17,30 @@ const Model = ({ scrollPosition }) => {
   const positionFrequency = 2; // Frequency of up-and-down movement
 
   // Create an instance of Timer
-  const timer = useRef(new Timer()).current;
+
 
   const rotationSpeed = 0.3; // Speed of rotation
   const lastRotation = useRef(0); // Store the last rotation before pausing
+  var timex = useRef(0);
 
   useEffect(() => {
     if (modelRef.current) {
       modelRef.current.position.set(0, 0, 0);
     }
-    timer.start();
-    return () => timer.stop();
-  }, [timer]);
+  });
 
   useFrame(() => {
     // Phase 1: Rotate the object when scrolling is less than 650px
     if (scrollPosition < 650) {
-      if (timer.paused) {
-        timer.resume(); // Resume the timer if scrolling back under 650px
-      }
-      const time = timer.getElapsedTime() / 1000;
+   
 
       // Calculate up-and-down movement using a sine wave
-      const yPosition = positionAmplitude * Math.sin(time * positionFrequency);
+      timex.current += 0.03;
+      const yPosition = positionAmplitude * Math.sin(timex.current * positionFrequency);
 
       // Apply the rotation and movement to the model
       if (modelRef.current) {
-        modelRef.current.rotation.y = time * rotationSpeed;
+        modelRef.current.rotation.y += 0.005;
         modelRef.current.position.y = yPosition;
       }
 
@@ -54,10 +51,6 @@ const Model = ({ scrollPosition }) => {
             // Capture the last rotation state when scroll is under 650
             lastRotation.current = modelRef.current.rotation.y;
 
-    } else {
-      if (!timer.paused) {
-        timer.pause(); // Pause the timer if scrolling past 650px
-      }
     }
 
     if (scrollPosition >= 650 && scrollPosition <= 1400) {
@@ -76,7 +69,8 @@ const Model = ({ scrollPosition }) => {
       // Interpolate the rotation from the current position to the target position
       if (modelRef.current) {
         if(targetRotation != modelRef.current.rotation.y)
-        modelRef.current.rotation.y += 0.01;
+
+          modelRef.current.rotation.y = lastRotation.current * (1 - progress) + targetRotation * progress;
       }
     
       // Apply the interpolated lookAt target
