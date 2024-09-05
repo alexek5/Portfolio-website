@@ -54,6 +54,9 @@ const AboutMe = () => {
   }, [startCounting]);
 
   return (
+    
+    <>
+    <div className='rubrik'>about me</div>
     <div className="earth" ref={containerRef}>
       <div className="canvas-container">
         <Canvas shadows>
@@ -76,6 +79,7 @@ const AboutMe = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

@@ -3,6 +3,8 @@ import './overlay.css';
 
 const Overlay = () => {
   return (
+    <>
+    
     <div className="text-container">
 
     <div>
@@ -26,6 +28,7 @@ const Overlay = () => {
         <div className="space2"> </div>
       </div>
     </div>
+    </>
   )
 }
 

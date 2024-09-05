@@ -57,6 +57,17 @@ canvas {
   z-index: 9999;
 }
 
+.rubrik{
+  font-size: 70px;
+  position: sticky;
+  top: 0px;
+  padding-top: 20px;
+  background-color: transparent;
+  z-index: 100;
+  margin-left: 40vw;
+
+}
+
 
 
 
