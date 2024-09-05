@@ -1,40 +1,101 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useGLTF, ContactShadows } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
+import { useFrame, useThree } from '@react-three/fiber';
+import Timer from './Timer.jsx'; // Import the Timer class
 
-const Model = () => {
+const Model = ({ scrollPosition }) => {
   const { scene } = useGLTF('/scene.gltf'); // Ensure this path is correct
   const modelRef = useRef();
   
   // State for the shadow's scale
   const [shadowScale, setShadowScale] = useState(10);
 
+  // Get the camera from the `useThree` hook
+  const { camera } = useThree();
+
   const positionAmplitude = 0.05; // Amplitude for up-and-down movement
   const positionFrequency = 2; // Frequency of up-and-down movement
-  const rotationSpeed = 0.002; // Speed of rotation
+
+  // Create an instance of Timer
+  const timer = useRef(new Timer()).current;
+
+  const rotationSpeed = 0.3; // Speed of rotation
+  const lastRotation = useRef(0); // Store the last rotation before pausing
 
   useEffect(() => {
     if (modelRef.current) {
-      // Set the initial rotation (x, y, z)
-      modelRef.current.rotation.set(0.4, 2, 0); 
       modelRef.current.position.set(0, 0, 0);
     }
-  }, []);
+    timer.start();
+    return () => timer.stop();
+  }, [timer]);
 
-  useFrame(({ clock }) => {
-    if (modelRef.current) {
-      const time = clock.getElapsedTime();
+  useFrame(() => {
+    // Phase 1: Rotate the object when scrolling is less than 650px
+    if (scrollPosition < 650) {
+      if (timer.paused) {
+        timer.resume(); // Resume the timer if scrolling back under 650px
+      }
+      const time = timer.getElapsedTime() / 1000;
 
-      // Rotate the model
-      modelRef.current.rotation.y += rotationSpeed;
-
-      // Calculate up and down movement using a sine wave
+      // Calculate up-and-down movement using a sine wave
       const yPosition = positionAmplitude * Math.sin(time * positionFrequency);
-      modelRef.current.position.y = yPosition;
 
-      // Optionally, you can adjust shadow scale based on yPosition
-      // const newShadowScale = 10 + (yPosition * 50); // Scale shadow inversely to y
-      // setShadowScale(newShadowScale);
+      // Apply the rotation and movement to the model
+      if (modelRef.current) {
+        modelRef.current.rotation.y = time * rotationSpeed;
+        modelRef.current.position.y = yPosition;
+      }
+
+      // Set the camera to a fixed position looking at the object
+      camera.position.set(0, 1, 5);
+      camera.lookAt(0, 0, 0);
+
+            // Capture the last rotation state when scroll is under 650
+            lastRotation.current = modelRef.current.rotation.y;
+
+    } else {
+      if (!timer.paused) {
+        timer.pause(); // Pause the timer if scrolling past 650px
+      }
+    }
+
+    if (scrollPosition >= 650 && scrollPosition <= 1400) {
+      const progress = (scrollPosition - 650) / 750; // Progress from 0 to 1 för rotation och camera movement
+      const targetCam = { x: 0, y: 1, z: 1 }; // Den slutgiltiga positionen för kameran
+      const targetRotation = 3.2; // Slutrotation (t.ex. 90 grader)
+      const targetLookAt = 0.6; // Slutpunkt för camera lookAt
+    
+      // Smoothly interpolate camera's position
+      camera.position.x = 0 * (1 - progress) + targetCam.x * progress;
+      camera.position.y = 1 * (1 - progress) + targetCam.y * progress;
+      camera.position.z = 5 * (1 - progress) + targetCam.z * progress;
+    
+      const lookAtY = 0 * (1 - progress) + targetLookAt * progress;
+      
+      // Interpolate the rotation from the current position to the target position
+      if (modelRef.current) {
+        if(targetRotation != modelRef.current.rotation.y)
+        modelRef.current.rotation.y += 0.01;
+      }
+    
+      // Apply the interpolated lookAt target
+      camera.lookAt(0, lookAtY, 0);
+    }
+    
+
+    if (scrollPosition > 1400 && scrollPosition <= 2500) {
+      // Keep the camera at the fixed target position after 1400
+      camera.position.set(0, 1, 1); // Use the exact position as before
+      camera.lookAt(0, 0.6, 0); // Ensure the camera continues looking at the object
+      if (modelRef.current) {
+        modelRef.current.rotation.y = 3.2; // Rotate one full circle based on progress; // Continue rotating
+      }
+    }
+
+    if (scrollPosition > 2500 && scrollPosition <= 3000) {
+      camera.lookAt(0, 0, 0); // Look at the object
+
     }
   });
 
@@ -57,4 +118,3 @@ const Model = () => {
 };
 
 export default Model;
-

@@ -23,7 +23,7 @@ const Overlay = () => {
         <div className="info-text2">
         Directly after the high school i went to Lunds univeristy to study computer science where i graduated in 2025.
         </div>
-        <div className="space"> </div>
+        <div className="space2"> </div>
       </div>
     </div>
   )
