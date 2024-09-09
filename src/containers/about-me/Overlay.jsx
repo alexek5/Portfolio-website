@@ -8,24 +8,39 @@ const Overlay = () => {
     <div className="text-container">
 
     <div>
+        <div>
+        <div className='info-text1'>
+            hej mitt namn är alexander. scrolla ner för att veta mer om mig
+        </div>
+        <div className="space"> </div>
+        </div>
+        
         <div className="info-text1">
-        Hi, I'm Alexander. Scroll down to learn more about me.
+        starta sidan med rubrik och texten scrolla ner för att veta mer om mig. 
         </div>
         <div className="space"> </div>
       </div>
 
       <div>
         <div className="info-text1">
-        I live in Stockholm, Sweden where I went to science class at sjölins gymnasium.
+        medan nästa kommer upp så zoomas vi till sverige.
         </div>
         <div className="space"> </div>
       </div>
 
       <div>
         <div className="info-text2">
-        Directly after the high school i went to Lunds univeristy to study computer science where i graduated in 2025.
+        medan nästa kommer upp så sätts en pin på stockholm.
         </div>
         <div className="space2"> </div>
+
+        <div>
+        <div className="info-text2">
+        medan nästa kommer upp så sätts en pin på lund. och när denna text scrollas undan så zoomar vi ut från jorden.
+        </div>
+        <div className="space2"> </div>
+      </div>
+
       </div>
     </div>
     </>

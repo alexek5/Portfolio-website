@@ -1,8 +1,15 @@
 .earth {
-  position: relative;
-  height: 500vh; /* Enough height for scrolling */
-  background-color: antiquewhite;
+  position: absolute;
+  height: 700vh; /* Enough height for scrolling */
+  width: 100%;
+  background-color: whitesmoke;
 }
+
+.about-me{
+  position: relative;
+}
+
+
 
 .text-container {
   position: relative;
@@ -10,7 +17,7 @@
 }
 
 .info-text1, .info-text2 {
-  position: sticky;
+  position: relative;
   top: 50px; /* Sticky position from the top of the viewport */
   left: 50px;
   color: black;
@@ -20,8 +27,17 @@
   z-index: 10;
   height: auto;
   width: 30%;
-  margin-bottom: 50vh;
   /* Ensure space between texts */
+}
+
+.info-text{ 
+  background-color: white;
+  width: 30%;
+  padding: 20px;
+  border-radius: 5px;
+  position: absolute;
+  top: 130px; /* Sticky position from the top of the viewport */
+  left: 50px;
 }
 
 .info-text2 {
@@ -37,12 +53,14 @@
   top: 0;
   height: 100vh;
   width: 100%;
+  z-index: 0;
 }
 
 canvas {
   display: block;
   width: 100%;
   height: 100%;
+  
 }
 
 .scroll-indicator {
@@ -61,13 +79,21 @@ canvas {
   font-size: 70px;
   position: sticky;
   top: 0px;
+  width: 100%;
+  text-align: center;
+
   padding-top: 20px;
-  background-color: transparent;
-  z-index: 100;
-  margin-left: 40vw;
+  background-color: whitesmoke;
+  z-index: 9999;
+
 
 }
 
 
+.space{
+  height: 100vh;
+  position: sticky;
+  top: 100px;
+}
 
 

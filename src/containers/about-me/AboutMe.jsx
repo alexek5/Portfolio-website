@@ -41,7 +41,7 @@ const AboutMe = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (startCounting) {
-        const scrollY = window.scrollY - containerRef.current.offsetTop; // Subtract the top offset of the AboutMe section
+        const scrollY = window.scrollY - 500; // Subtract the top offset of the AboutMe section
         setScrollPosition(Math.max(scrollY, 0)); // Ensure we don't go below 0
       }
     };
@@ -55,10 +55,16 @@ const AboutMe = () => {
 
   return (
     
-    <>
-    <div className='rubrik'>about me</div>
+    <div className='about-me'>
+    
+    
     <div className="earth" ref={containerRef}>
+    <Overlay />
+    
+    <div className='rubrik'>about me</div>
+    
       <div className="canvas-container">
+      
         <Canvas shadows>
           <ambientLight intensity={2} />
           <spotLight intensity={5} angle={0.1} penumbra={1} position={[10, 15, 10]} castShadow />
@@ -70,7 +76,7 @@ const AboutMe = () => {
         </Canvas>
       </div>
 
-      <Overlay />
+      
 
       {/* Display Scroll Position */}
       {startCounting && (
@@ -78,8 +84,9 @@ const AboutMe = () => {
           Scrolled: {scrollPosition}px
         </div>
       )}
+      
     </div>
-    </>
+    </div>
   );
 };
 
