@@ -8,19 +8,33 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
 }
 
 .header-content{
  position: relative;
- height: max-content;
+ height: 50vh;
  width: 36rem;
+
+}
+
+.k{
+    font-size: 20rem;
+    height: 50vh;
+    width: 40vh;
+}
+
+.line{
+    border-right: 5px solid rgb(0, 217, 255);
+    width: 5vh;
+    height: 50vh;
 
 }
 
 .rubrik-wrapper {
     position: relative; /* Behöver vara relativt positionerad för att positionera markören korrekt */
      /* Göm text som är utanför denna behållare */
-    width: 36rem; /* Justera bredden baserat på textens längd */
+    width: 24rem; /* Justera bredden baserat på textens längd */
     animation: typing 1s linear forwards;
     left: 0;
 }
@@ -28,12 +42,13 @@
 .rubrik {
     font-family: Arial, Helvetica, sans-serif; /* Var vänlig kontrollera om du har en variabel för font-family */
     font-weight: 0;
-    font-size: 4rem;
+    font-size: 3rem;
+    letter-spacing: -0.2rem;
 
 
     white-space: nowrap;
     overflow: hidden; /* Göm text som är utanför denna behållare */
-    width: 36rem; /* Anpassa bredden baserat på textens längd */
+    width: 24rem; /* Anpassa bredden baserat på textens längd */
     position: relative; /* Behöver vara relativt positionerad för att positionera markören korrekt */
     animation: typing 1s linear forwards; /* Typningseffekt */
 }
@@ -53,7 +68,7 @@
  
 @keyframes typing {
     from { width: 0; }
-    to { width: 36rem; } /* Justera till den fulla bredden av texten */
+    to { width: 24rem; } /* Justera till den fulla bredden av texten */
 }
 
 @keyframes hide-caret {
@@ -70,15 +85,29 @@
     animation: typing2 1s linear forwards;
     animation-delay: 1s;
     left: 0;
-    margin-top: 10vh;
+    margin-top: 14vh;
 }
 
 
 
-.sub-rubrik {
+.sub-rubrik, .subrubrik2 {
     font-family: Arial, Helvetica, sans-serif; /* Var vänlig kontrollera om du har en variabel för font-family */
     font-weight: 0;
     font-size: 1rem;
+
+
+    white-space: nowrap;
+    overflow: hidden; /* Göm text som är utanför denna behållare */
+    width: 0; /* Anpassa bredden baserat på textens längd */
+    position: relative; /* Behöver vara relativt positionerad för att positionera markören korrekt */
+    animation: typing2 1s linear forwards; /* Typningseffekt */
+    animation-delay: 1s;
+}
+
+.subrubrik2{
+    font-family: Arial, Helvetica, sans-serif; /* Var vänlig kontrollera om du har en variabel för font-family */
+    font-weight: 0;
+    font-size: 3rem;
 
 
     white-space: nowrap;
@@ -113,43 +142,3 @@
 
 
 
-@media screen and (max-width: 1050px) {
-    .header {
-        flex-direction: column;
-    }
-
-    .header-content {
-        margin: 0 0 3rem;
-    }
-
-    .header-image{
-        padding-left: 30%;
-        padding-right: 30%;
-    }
-}
-
-
-@media screen and (max-width: 650px) {
-    .header-content h1 {
-        font-size: 48px;
-        line-height: 60px;
-    }
-
-    .header-content p {
-        font-size: 16px;
-        line-height: 24px;
-    }
-}
-
-@media screen and (max-width: 490px) {
-    .header-content h1 {
-        font-size: 36px;
-        line-height: 48px;
-    }
-
-    .header-content p {
-        font-size: 14px;
-        line-height: 24px;
-    }
-
-}
