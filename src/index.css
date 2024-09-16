@@ -11,9 +11,20 @@ import font:
   --font-family: 'Manrope', sans-serif;
   
 
-    /*gradient website: https://angrytools.com/gradient/ */     
-    --gradient-text: linear-gradient(90deg, rgba(45, 104, 48, 1) 0%, rgba(51, 255, 147, 1) 100%);
+    /*gradient website: https://angrytools.com/gradient/  
     
+    Green
+    --gradient-text: linear-gradient(90deg, rgba(45, 104, 48, 1) 0%, rgba(51, 255, 147, 1) 100%);
+ */     
+  
+ 
+    --gradient-text: linear-gradient(90deg, rgba(0, 217, 255) 0%, rgba(236, 110, 173, 1) 100%);
+    
+/*
+blue turkos
+    --gradient-text: linear-gradient(315deg, rgb(10, 0, 144) 0%, hsla(168, 53%, 52%, 1) 100%);
+*/
+
     
     --gradient-bar: linear-gradient(103.22deg, #AE67FA -13.86%, #F49867 99.55%);
     
@@ -22,4 +33,11 @@ import font:
     --color-blog: #042c54;
     --color-text: #81AFDD;
     --color-subtext: #FF8A71;
+
+    /*height for sticky text in about-me section*/
+    --space: 20vh;
+    --margin: 10vh;
+    --text: 80vh;
+
+    
   }

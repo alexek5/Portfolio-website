@@ -25,33 +25,65 @@ const Model = ({ scrollPosition }) => {
 
   var timex = useRef(0);
 
+  const deviceHeight = window.innerHeight;
+  const space = 0.2*deviceHeight;
+  
+  const stop1 = space;
+  const stop2 = stop1+deviceHeight;
+  const stop3 = stop2+deviceHeight+space;
+  const stop4 = stop3+deviceHeight+space;
+  const stop5 = stop4+space
+  const stopEnd = stop5+deviceHeight;
+
+  const hideObject = () => {
+    if (stockholmRef.current || lundRef.current) {
+      stockholmRef.current.visible = false; // Sätter objektet som osynligt
+      lundRef.current.visible = false;
+    }
+  };
+  
+  const showObject = () => {
+    if (stockholmRef.current || lundRef.current) {
+      stockholmRef.current.visible = true; // Gör objektet synligt igen
+      lundRef.current.visible = true;
+    }
+  };
+
+
+
+
+
   useEffect(() => {
     if (earthRef.current) {
       earthRef.current.position.set(0, 0, 0);
     }
     if (stockholmRef.current) {
-      stockholmRef.current.position.set(0, 1, 0); // Placera mapPin bredvid huvudmodellen
+      
       stockholmRef.current.scale.set(0.04, 0.04, 0.04); // Minska storleken till hälften
     }
     if (lundRef.current) {
-      lundRef.current.position.set(0, 1, 0); // Placera mapPin bredvid huvudmodellen
+      
       lundRef.current.scale.set(0.045, 0.045, 0.045); // Minska storleken till hälften
     }
   }, []);
 
+
+
+
+
   useFrame(() => {
 
 
-    if (scrollPosition < 650) {
-      timex.current += 0.03;
+    if (scrollPosition < stop1  ||  scrollPosition>stopEnd) {
+      timex.current += 0.008;
       const yPosition = positionAmplitude * Math.sin(timex.current * positionFrequency);
+      hideObject();
 
       if (earthRef.current) {
-        earthRef.current.rotation.y += 0.005;
+        earthRef.current.rotation.y += 0.002;
         earthRef.current.position.y = yPosition;
       }
-
-
+     
       camera.position.set(0, 1, 5);
       camera.lookAt(0, 0, 0);
       lastRotation.current = earthRef.current.rotation.y;
@@ -60,9 +92,9 @@ const Model = ({ scrollPosition }) => {
 
 
 
-    if (scrollPosition >= 650 && scrollPosition <= 1400) {
-      const progress = (scrollPosition - 650) / 750;
-      
+    if (scrollPosition >= stop1 && scrollPosition <= stop2) {
+      const progress = (scrollPosition - stop1) / (stop2-stop1);
+      hideObject();
       const targetCam = { x: 0, y: 1, z: 1 };
       const targetRotation = 3.2;
       const targetLookAt = 0.6;
@@ -85,9 +117,10 @@ const Model = ({ scrollPosition }) => {
 
 
 
-    if (scrollPosition > 1400 && scrollPosition <= 1600) {
-      const progress = (scrollPosition - 1400) / 200;
+    if (scrollPosition > stop2 && scrollPosition <= stop3) {
+      const progress = (scrollPosition - stop2) / (stop3-stop2);
       //stockholmRef.current.position.set(0.025, 0.963, 0.8);
+      showObject();
       const targetPin = { x: 0.023, y: 0.962, z: 0.8}
       camera.position.set(0, 1, 1)
       earthRef.current.rotation.y = 3.2;
@@ -102,19 +135,11 @@ const Model = ({ scrollPosition }) => {
 
     }
 
-    if (scrollPosition > 1600 && scrollPosition <= 2000){
-      
-      if(stockholmRef.current){
-        stockholmRef.current.position.set(0.023, 0.962, 0.8);
-      }
-      camera.lookAt(0, 0.6, 0);
-      
-    }
 
 
 
-    if (scrollPosition > 2000 && scrollPosition <= 2500) {
-      const progress = (scrollPosition - 2000) / 500;
+    if (scrollPosition > stop3 && scrollPosition <= stop4) {
+      const progress = (scrollPosition - stop3) / (stop4-stop3);
       const targetPin = { x: 0.006, y: 0.957, z: 0.85 };
       if(stockholmRef.current){
         stockholmRef.current.position.set(0.023, 0.962, 0.8);
@@ -127,21 +152,77 @@ const Model = ({ scrollPosition }) => {
         
       }
 
+      if (earthRef.current) {
+
+          earthRef.current.rotation.y =  3.2;
+          earthRef.current.position.y = 0;
+      }
+
+      camera.position.set(0, 1, 1)
+
       
   
       camera.lookAt(0, 0.6, 0);
     }
 
-    if (scrollPosition > 2500 && scrollPosition <= 3000) {
-      
-      if(lundRef.current){
-        lundRef.current.position.set(0.006, 0.957, 0.85);
-      }
+    if(scrollPosition > stop4 && scrollPosition < stop5){
+      showObject();
       if(stockholmRef.current){
         stockholmRef.current.position.set(0.023, 0.962, 0.8);
       }
+      if(lundRef.current){
+        lundRef.current.position.set(0.006, 0.957, 0.85);
+      }
+      if (earthRef.current) {
 
-      camera.lookAt(0, 0.6, 0);
+        earthRef.current.rotation.y =  3.2;
+        earthRef.current.position.y = 0;
+    }
+
+    camera.position.set(0, 1, 1)
+
+    
+
+    camera.lookAt(0, 0.6, 0);
+    }
+
+    if (scrollPosition > stop5 && scrollPosition <= stopEnd) {
+      const progress = (scrollPosition - stop5) / (stopEnd-stop5);
+      const targetPinLund = { x: 0.006, y: 0.957, z: 0.85 };
+      const targetPinStockholm = { x: 0.023, y: 0.962, z: 0.8}
+      showObject()
+      if(lundRef.current){
+        lundRef.current.position.x = targetPinLund.x;
+        lundRef.current.position.y = targetPinLund.y * (1-progress) + 2 * progress;
+        lundRef.current.position.z = targetPinLund.z;
+      }
+      if(stockholmRef.current){
+        stockholmRef.current.position.x = targetPinStockholm.x;
+        stockholmRef.current.position.y = targetPinStockholm.y * (1-progress) + 2 * progress;
+        stockholmRef.current.position.z = targetPinStockholm.z;
+      }
+
+      
+
+
+           
+      const targetCam = { x: 0, y: 1, z: 5 };
+      const targetRotation = 3.2;
+      const targetLookAt = 0;
+
+      camera.position.x = 0 * (1 - progress) + targetCam.x * progress;
+      camera.position.y = 1 * (1 - progress) + targetCam.y * progress;
+      camera.position.z = 1 * (1 - progress) + targetCam.z * progress;
+
+      const lookAtY = 0.6 * (1 - progress) + targetLookAt * progress;
+
+      if (earthRef.current) {
+        if(targetRotation != earthRef.current.rotation.y)
+
+          earthRef.current.rotation.y =  targetRotation* (1 - progress) + lastRotation.current * progress;
+          earthRef.current.position.y = 0 * (1 - progress) + lastPosition.current * progress;
+      }
+      camera.lookAt(0, lookAtY, 0);
     }
   });
 

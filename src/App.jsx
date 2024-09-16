@@ -2,21 +2,24 @@ import React from 'react';
 
 
 import { Article, Navbar} from './components';
-import { Header, AboutMe} from './containers';
+import { Header, AboutMe, MyProjects, MySkills} from './containers';
 import './App.css'
+
 
 const App = () => {
   return (
     <>
     <div className = "App"> 
-    <Navbar />
-      <div className = "gradient_bg">
-        
-        <Header>
-          
-        </Header>
+    
+      <div className = "Hero">
+      <Navbar />
+      <Header />
       </div>
+      
       <AboutMe />
+      <MyProjects />
+      <MySkills />
+
     </div>
     </>
 

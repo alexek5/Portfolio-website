@@ -16,8 +16,22 @@ a{
     text-decoration: none;
 }
 
+.Hero{
+    height: 100vh;
+    width: 100%;
+    
+}
+
 canvas{
    
+}
+
+.about-me{
+    position: relative;
+}
+
+.my-projects{
+    position: relative;
 }
 
 .gradient_bg

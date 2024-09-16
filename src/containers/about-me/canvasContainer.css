@@ -1,0 +1,29 @@
+.canvas-container {
+    position: sticky;
+    top: 0;
+    height: 100vh; /* Full höjd av viewporten */
+    width: 65%;     /* 70% av viewportens bredd */
+    z-index: 0;
+    overflow: hidden;
+ /* Centrerar canvas vertikalt */
+   /* overflow: hidden;  Se till att inget innehåll visas utanför containern */
+  }
+  
+  /*
+  canvas {
+    display: block;
+    width: 100%; /* Se till att canvas fyller containern fullständigt */
+   /*  height: 70%; Samma här, tar hela containerns höjd */
+   /* object-fit: contain; Håll rätt proportioner om storleken ändras *//*
+    position: relative;
+    bottom: 0px; } */
+
+  .canvas{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0px;
+
+
+
+  }

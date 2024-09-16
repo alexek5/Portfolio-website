@@ -18,7 +18,7 @@ const Navbar = () => {
       <div className="navbar-links">
 
         <div className="navbar-links_logo">
-            <img src={memojiTest} alt="logo" />
+            A
         </div>
 
         <div className="navbar-links_container">
@@ -26,8 +26,8 @@ const Navbar = () => {
         </div>
     </div>
 
-        <div className="navbar-contactMe">
-            <button type="button"> Contact Me</button>
+        <div className="navbar-contactMe ">
+            <button type="button"> <div className='button-text'>Contact Me</div></button>
         </div>
 
         <div className="navbar-menu">

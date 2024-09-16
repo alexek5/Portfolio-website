@@ -2,11 +2,13 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Environment, OrbitControls, ScrollControls } from '@react-three/drei';
 
-import Model from './Model.jsx';
+
 import './aboutMe.css';
 import Overlay from './Overlay.jsx';
+import CanvasContainer from './CanvasContainer.jsx'
 
 const AboutMe = () => {
+ 
   const containerRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [startCounting, setStartCounting] = useState(false); // State to track if counting should start
@@ -41,7 +43,7 @@ const AboutMe = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (startCounting) {
-        const scrollY = window.scrollY - 500; // Subtract the top offset of the AboutMe section
+        const scrollY = window.scrollY - window.innerHeight -100; // the header (100vh) and navbar 100px
         setScrollPosition(Math.max(scrollY, 0)); // Ensure we don't go below 0
       }
     };
@@ -52,40 +54,23 @@ const AboutMe = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [startCounting]);
-
   return (
     
     <div className='about-me'>
-    
-    
-    <div className="earth" ref={containerRef}>
-    <Overlay />
-    
-    <div className='rubrik'>about me</div>
-    
-      <div className="canvas-container">
-      
-        <Canvas shadows>
-          <ambientLight intensity={2} />
-          <spotLight intensity={5} angle={0.1} penumbra={1} position={[10, 15, 10]} castShadow />
-          <ScrollControls pages={0} damping={0.25}>
-            <Model scrollPosition={scrollPosition}/>
-          </ScrollControls>
-          <Environment preset="city" />
-          <OrbitControls enableZoom={false} />
-        </Canvas>
-      </div>
-
-      
-
-      {/* Display Scroll Position */}
-      {startCounting && (
-        <div className="scroll-indicator">
-          Scrolled: {scrollPosition}px
+       <div className="sticky-section" ref={containerRef}>
+        <Overlay />
+        <CanvasContainer scrollPosition={scrollPosition}/> 
+        
         </div>
-      )}
-      
-    </div>
+
+
+                 {/* Display Scroll Position */}
+                 {startCounting && (
+            <div className="scroll-indicator">
+              Scrolled: {scrollPosition}px
+            </div>
+          )}
+
     </div>
   );
 };

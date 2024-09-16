@@ -1,24 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './header.css';
-import memojiTest from '../../assets/memojiTest.svg'
-
 
 const Header = () => {
+
   return (
-    <div className="header section_padding" id="home">
+  <div className="header" id="home">
+    <div className="header-content">
 
-      <div className = "header-content">
-        <h1 className="gradient_text">Hi, My Name Is Alex</h1>
-        <p>I'm a computer science engineer student and a software developer freelancer</p>
+      <div className="rubrik-wrapper">
+        <div className="rubrik gradient_text">Hi, My name is Alex!</div>
+        <div className="cursor1"></div>
       </div>
 
-      <div className="header-image">
-        <img src={memojiTest} alt="character" />
+      <div className='sub-rubrik-wrapper'>
+        <div className='sub-rubrik'> I am a Software developer and a Computer scienctist</div>
+        <div className="cursor2"></div>
       </div>
+
+      
+    
+
+  </div>
+
     </div>
-  )
+  );
 }
 
 export default Header;
-
-//        <!--  -->

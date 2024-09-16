@@ -1,50 +1,117 @@
 .header{
     display: flex;
     height: 100vh;
+    width: 100%;
     position: relative;
+    background-color: white;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .header-content{
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
+ position: relative;
+ height: max-content;
+ width: 36rem;
 
-    margin-right: 5rem;
 }
 
-.header-content h1{
-    font-family: var(--font-family);
-    font-weight: 400;
-    font-size: 62px;
-    line-height: 75px;
-    letter-spacing: -0.04em;
-    
+.rubrik-wrapper {
+    position: relative; /* Behöver vara relativt positionerad för att positionera markören korrekt */
+     /* Göm text som är utanför denna behållare */
+    width: 36rem; /* Justera bredden baserat på textens längd */
+    animation: typing 1s linear forwards;
+    left: 0;
 }
 
-.header-content p{
-    font-family: var(--font-family);
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 27px;
+.rubrik {
+    font-family: Arial, Helvetica, sans-serif; /* Var vänlig kontrollera om du har en variabel för font-family */
+    font-weight: 0;
+    font-size: 4rem;
 
-    margin-top: 1.5rem;
+
+    white-space: nowrap;
+    overflow: hidden; /* Göm text som är utanför denna behållare */
+    width: 36rem; /* Anpassa bredden baserat på textens längd */
+    position: relative; /* Behöver vara relativt positionerad för att positionera markören korrekt */
+    animation: typing 1s linear forwards; /* Typningseffekt */
 }
 
-.header-image{
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    
+.cursor1{
+    position: absolute;
+    right: -2rem; /* Justera positionen av markören så den är utanför den synliga texten */
+    top: 50%;
+    width: 2rem; /* Justera storleken på markören */
+    height: 2rem; /* Justera storleken på markören */
+    background-color: black; /* Markörens färg */
+    border-radius: 50%; /* Gör markören till en cirkel */
+    transform: translateY(-50%); /* Centrerar markören vertikalt */
+    animation:  hide-caret 1s linear forwards; /* Lägg till blinkande animation och dölja markören när texten är klar */
 }
 
-.header-image img{
-    width: 70%;
-    height: 70%;
+ 
+@keyframes typing {
+    from { width: 0; }
+    to { width: 36rem; } /* Justera till den fulla bredden av texten */
 }
+
+@keyframes hide-caret {
+    0% {opacity: 1;}
+    99% { opacity: 1; }
+    100% { opacity: 0; } /* Döljer markören när texten är klar */
+}
+  
+
+.sub-rubrik-wrapper {
+    position: relative; /* Behöver vara relativt positionerad för att positionera markören korrekt */
+     /* Göm text som är utanför denna behållare */
+    width: 0rem; /* Justera bredden baserat på textens längd */
+    animation: typing2 1s linear forwards;
+    animation-delay: 1s;
+    left: 0;
+    margin-top: 10vh;
+}
+
+
+
+.sub-rubrik {
+    font-family: Arial, Helvetica, sans-serif; /* Var vänlig kontrollera om du har en variabel för font-family */
+    font-weight: 0;
+    font-size: 1rem;
+
+
+    white-space: nowrap;
+    overflow: hidden; /* Göm text som är utanför denna behållare */
+    width: 0; /* Anpassa bredden baserat på textens längd */
+    position: relative; /* Behöver vara relativt positionerad för att positionera markören korrekt */
+    animation: typing2 1s linear forwards; /* Typningseffekt */
+    animation-delay: 1s;
+}
+
+.cursor2{
+    position: absolute;
+    right: -0.5rem; /* Justera positionen av markören så den är utanför den synliga texten */
+    top: 50%;
+    width: 0.5rem; /* Justera storleken på markören */
+    height: 0.5rem; /* Justera storleken på markören */
+    background-color: black; /* Markörens färg */
+    border-radius: 50%; /* Gör markören till en cirkel */
+    transform: translateY(-50%); /* Centrerar markören vertikalt */
+    animation:  hide-caret 1s linear forwards; /* Lägg till blinkande animation och dölja markören när texten är klar */
+    animation-delay: 1s;
+    opacity: 0;
+}
+
+ 
+@keyframes typing2 {
+    from { width: 0; }
+    to { width: 25rem; } /* Justera till den fulla bredden av texten */
+}
+
+
+
+
 
 @media screen and (max-width: 1050px) {
     .header {
