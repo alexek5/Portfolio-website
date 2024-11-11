@@ -4,8 +4,9 @@
     align-items: center;
     background-color: #ffffff00;
 
-    padding: 2rem 2rem;
+    padding: 2rem 0rem;
     height: 10vh;
+    width: 100%;
     position: absolute;
     z-index: 9999;
 }
@@ -13,7 +14,7 @@
 .navbar-links{
     flex: 1;
     display: flex;
-    justify-content: flex-start;
+    justify-content:space-between;
     align-items: center;
 }
 
@@ -23,6 +24,7 @@
     font-size: 1.5rem;
     background-color: white;
     padding: 1rem;
+    margin-left: 2rem;
     width: 2rem;
     height: 2rem;
     display: flex;
@@ -31,6 +33,7 @@
     border-radius: 100%;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; 
     margin-right: 2rem;
+    position: relative;
 
 }
 
@@ -42,12 +45,14 @@
 .navbar-links_container{
     display: flex;
     flex-direction: row;
+    position: relative;
 }
 
 .navbar-contactMe{
     display: flex;
-    margin-left: auto;
+    margin-right: 2rem;
     align-items: center;
+    position: relative;
 }
 
 .navbar-links_container p {
@@ -58,7 +63,7 @@
     line-height: 25px;
     text-transform: capitalize;
 
-    margin: 0 1rem;
+    margin: 0 2rem;
     cursor: pointer;
 }
 .navbar-contactMe button, .navbar-menu_container button {
@@ -90,7 +95,8 @@
 }
 
 .navbar-menu{
-    margin-left: 25rem;
+    margin-right: 2rem;
+    
 
     display: none;
     position: relative;

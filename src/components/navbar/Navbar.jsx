@@ -2,11 +2,14 @@ import React, {useState} from 'react'
 import { RiMenu3Line, RiCloseLine} from 'react-icons/ri'
 import './Navbar.css'
 import memojiTest from '../../assets/memojiTest.svg'
+import '../../App.jsx'
 
 const Menu = () => (
     <>
-    <p><a href="#home">home</a></p>
+    <p><a href="#home">Home</a></p>
     <p><a href="#aboutMe">About Me</a></p>
+    <p><a href="#myProjects">My Projects</a></p>
+    <p><a href="#mySkills">My Skills</a></p>
     </>
 )
 
@@ -24,7 +27,6 @@ const Navbar = () => {
         <div className="navbar-links_container">
             <Menu />
         </div>
-    </div>
 
         <div className="navbar-contactMe ">
             <button type="button"> <div className='button-text'>Contact Me</div></button>
@@ -42,7 +44,13 @@ const Navbar = () => {
                     </div>
                 </div>
             )}
-        </div>
+        </div>  
+
+    </div>
+
+       
+
+
 
       
     </div>

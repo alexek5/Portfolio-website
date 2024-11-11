@@ -43,7 +43,7 @@ const AboutMe = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (startCounting) {
-        const scrollY = window.scrollY - window.innerHeight -100; // the header (100vh) and navbar 100px
+        const scrollY = window.scrollY - window.innerHeight; // the header (100vh) and navbar 100px
         setScrollPosition(Math.max(scrollY, 0)); // Ensure we don't go below 0
       }
     };

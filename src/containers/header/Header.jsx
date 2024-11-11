@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './header.css';
 
+
 const Header = () => {
 
   return (
-  <div className="header" id="home">
+  <div className="header" id="home" >
+    
     <div className="header-content">
 
       <div className="rubrik-wrapper">
@@ -13,8 +15,17 @@ const Header = () => {
       </div>
 
       <div className='sub-rubrik-wrapper'>
-        <div className='sub-rubrik'> I am a Software developer and a Computer scienctist</div>
+        <div className='sub-rubrik'> 
+          I am a Software developer and a Computer scienctist.
+          </div>
         <div className="cursor2"></div>
+      </div>
+
+      <div className='sub-rubrik-wrapper2'>
+        <div className='sub-rubrik2'> 
+          Scroll down to learn more about me!
+          </div>
+        <div className="cursor3"></div>
       </div>
 
       
