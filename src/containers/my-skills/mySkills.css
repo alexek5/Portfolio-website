@@ -1,5 +1,6 @@
 
 
+
 .mySkills{
     height: 120vh;
     width: auto;
@@ -16,7 +17,9 @@
     
 }
 
-.pane{
+
+/* gradient box - link https://getcssscan.com/css-box-shadow-examples
+/*.pane{
     width: 95%;
     height: 95vh;
     background: rgb(0, 217, 255);
@@ -24,9 +27,52 @@
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; 
     /* inset skugga
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    */
+    
     background: linear-gradient(315deg, rgb(0, 217, 255) 0%, rgba(236, 110, 173, 1) 100%);
     display: flex;
+}
+*/
+
+.pane{
+  position: relative;
+  width: 90%;
+  height: 90vh;
+  background: rgb(231, 231, 231);
+  border-radius: 20px;
+  display: flex;
+  box-shadow: rgba(130, 130, 130, 0.636) 5px 5px 7px 0px inset, rgba(70, 70, 70, 0.5) -3px -3px 6px 1px inset;
+  flex-direction: column;
+
+}
+
+.title-row{
+  position: relative;
+  
+  width: 100%;
+  display: flex;
+ 
+  
+  align-items: center;
+  
+  
+}
+
+.title{
+  position: relative;
+  font-size: 2rem;
+  width: 50%;
+  margin-top: 5%;
+  padding-left: 2%;
+  
+  
+}
+
+
+.content{
+  position: relative;
+  height: 90%;
+  width: 100%;
+  display: flex;
 }
 
 
@@ -47,18 +93,37 @@
 
 }
 
-.cirkle{
-    position: relative;
+.DoughnutChart{
+  position: absolute;
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background-image: conic-gradient(
-        pink 70deg,
-        lightblue 0 235deg,
-        orange 0
-    );
+
+}
+.cirkel{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
 }
 
+
+.cirkel-text {
+  position: absolute;
+  z-index: 9999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -35%);
+  
+  font-size: 1.2rem;
+ 
+   /* Justera textfärg vid behov */
+  pointer-events: none; /* Gör så att texten inte stör hover-effekter */
+}
 
 
 .bar-container{
@@ -71,14 +136,37 @@
 }
 
 .bar-box{
+  position: relative;
+  width: 80%;
+
+
 
 }
 
 .bar-text{
-
+ font-size: 1.2rem;
+ margin-bottom: 0.5rem;
 }
 
 .bar{
+  position: relative;
+}
 
+/* Container for the progress bar */
+.progress-bar-container {
+  
+  height: 20px;
+  background-color: #e0e0e0; /* Light gray background */
+  border-radius: 10px; /* Rounded edges for the container */
+  overflow: hidden; /* Ensures progress bar doesn't overflow the container */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle inset shadow */
+}
+
+/* Actual progress bar */
+.progress-bar {
+  height: 100%;
+  background: var(--gradient-text); /* Gradient for progress */
+  border-radius: 10px; /* Ensures rounded edges for the bar */
+  transition: width 0.3s ease; /* Smooth animation for width changes */
 }
 

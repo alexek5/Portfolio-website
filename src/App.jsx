@@ -2,7 +2,7 @@ import React from 'react';
 
 
 import { Article, Navbar} from './components';
-import { Header, AboutMe, MyProjects, MySkills} from './containers';
+import { Header, AboutMe, MyProjects, MySkills, End} from './containers';
 import './App.css'
 
 
@@ -27,6 +27,8 @@ const App = () => {
       <div id="myProjects">
         <MyProjects /> 
       </div>
+
+      <End />
 
 
 
