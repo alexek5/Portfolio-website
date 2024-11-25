@@ -6,9 +6,24 @@ const MyProjects = () => {
     <div className='myProjects'>
       <div className='box'>
 
+        <div className='title'>Projects</div>
+
+        <div className='project-row'>
+          <div className='project-box'>
+
+          </div>
+
+          <div className='project-box'>
+            
+          </div>
+
+          <div className='project-box'>
+            
+          </div>
+          
+        </div>
+
       </div>
-        
-      
     </div>
   )
 }
