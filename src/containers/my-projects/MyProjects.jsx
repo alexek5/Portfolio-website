@@ -10,17 +10,26 @@ const MyProjects = () => {
 
         <div className='project-row'>
           <div className='project-box'>
-
+            <div className='project-picture'></div>
+            <div className='project-title'>TTime</div>
+            <div className='project-info'>A time reporting system made in Lund university with 18 other student were i was the project leader</div>
+  
           </div>
 
           <div className='project-box'>
+          <div className='project-picture'></div>
+            <div className='project-title'>TTime</div>
+            <div className='project-info'>A time reporting system made in Lund university with 18 other student were i was the project leader</div>
             
           </div>
 
           <div className='project-box'>
+          <div className='project-picture'></div>
+            <div className='project-title'>TTime</div>
+            <div className='project-info'>A time reporting system made in Lund university with 18 other student were i was the project leader</div>
             
           </div>
-          
+
         </div>
 
       </div>
