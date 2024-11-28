@@ -4,9 +4,9 @@ import { useFrame, useThree } from '@react-three/fiber';
 
 
 const Model = ({ scrollPosition }) => {
-  const { scene: earthScene } = useGLTF('/scene.gltf'); // Laddar Earth-modellen
-  const { scene: stockholmScene } = useGLTF('/mapPin.gltf'); // Laddar mapPin-modellen
-  const { scene: lundScene } = useGLTF('/mapPin2.gltf'); // Laddar mapPin-modellen
+  const { scene: earthScene } = useGLTF('/Portfolio-website/scene.gltf');
+  const { scene: stockholmScene } = useGLTF('/Portfolio-website/mapPin.gltf');
+  const { scene: lundScene } = useGLTF('/Portfolio-website/mapPin2.gltf');
   const earthRef = useRef();
   const stockholmRef = useRef();
   const lundRef = useRef();
