@@ -1,6 +1,7 @@
 {
   "name": "portfolio-website",
   "private": true,
+  "homepage": "https://username.github.io/repository-name",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
